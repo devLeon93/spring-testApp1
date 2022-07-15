@@ -1,8 +1,14 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicPlayer {
 
-    private Music music;
+    //private Music music;
+
+    List<Music> musicList = new ArrayList<>();
+
     private String name;
     private int volume;
 
@@ -11,9 +17,10 @@ public class MusicPlayer {
     }
 
     // IoC - Inversion of Control
-    public MusicPlayer(Music music) {
-        this.music = music;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
+
 
     public String getName() {
         return name;
@@ -31,12 +38,21 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public void setMusic(Music music) {
-        this.music = music;
+    public List<Music> getMusicList() {
+        return musicList;
     }
 
-    public void playMusic(){
-        System.out.println("Playing: " + music.getSong());
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    public void playMusicList(){
+        for(Music m : musicList){
+            System.out.println("Playing: " + m.getSong());
+        }
+
+
+
     }
 
 
